@@ -22,9 +22,11 @@ suspend fun fetchInput(day: Int): String {
     return response.bodyAsText()
 }
 
-fun solveDay(dayNr: Int, solver: (String) -> Any?) {
+typealias inputFunction = suspend (day: Int) -> String
+
+fun solveDay(dayNr: Int, input: inputFunction = ::fetchInput, solver: (input: String) -> Any?) {
     runBlocking {
-        println("The answer is ${solver(fetchInput(dayNr))}")
+        println("The answer is ${solver(input(dayNr))}")
     }
 }
 

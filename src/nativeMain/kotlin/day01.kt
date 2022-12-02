@@ -1,4 +1,4 @@
-fun main() {
+fun main01() {
     // Part 1
     solveDay(1) { input ->
         readElvishLists(input)
