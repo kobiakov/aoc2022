@@ -39,3 +39,10 @@ fun <T> List<T>.partitionBy(predicate: (T) -> Boolean): List<List<T>> =
         }
         acc
     }.filterNot { it.isEmpty() }
+
+fun <I, O> Pair<I, I>.map(mapping: (I) -> O): Pair<O, O> = Pair(mapping(first), mapping(second))
+
+fun <L, R, O> Pair<L, R>.fold(folder: (L, R) -> O): O = folder(first, second)
+
+fun <T> Collection<T>.only() =
+    if (size != 1) throw IllegalStateException("the collection is expected to only have one element: $this") else first()

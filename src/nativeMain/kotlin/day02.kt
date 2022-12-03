@@ -1,22 +1,22 @@
 import Outcome.*
 import Shape.*
 
-fun main() {
+fun main02() {
     // Part 1
-    solveDay(2, { TEST_INPUT }) { input ->
+    solveDay(2, { TEST_INPUT_DAY_2 }) { input ->
         inputToRounds(input)
             .map(::scoreForRound)
             .sum()
     }
     // Part 2
-    solveDay(2, { TEST_INPUT }) { input ->
+    solveDay(2, { TEST_INPUT_DAY_2 }) { input ->
         inputToUnfairRounds(input)
             .map(::scoreForRound)
             .sum()
     }
 }
 
-const val TEST_INPUT = """
+const val TEST_INPUT_DAY_2 = """
 A Y
 B X
 C Z    
