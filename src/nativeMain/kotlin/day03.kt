@@ -10,7 +10,7 @@ fun main() {
     solveDay(3, { TEST_INPUT_DAY_3 }) { input ->
         input.trim().lines()
             .map(::stringToRucksack)
-            .groupByThree()
+            .chunked(3)
             .map(List<Rucksack>::findBadge)
             .map(::itemPriority)
             .sum()
@@ -49,11 +49,7 @@ fun itemPriority(item: Item): Priority = if (item >= 'a') item - 'a' + 1 else it
 fun totalPriorityForRucksack(rucksack: Rucksack): Priority =
     itemsInBothCompartments(rucksack).map(::itemPriority).sum()
 
-fun List<Rucksack>.groupByThree() = chunked(3)
-
-infix fun Rucksack.commonItemsWith(other: Rucksack) = (first + second).intersect(other.first + other.second)
-
 fun List<Rucksack>.findBadge(): Item =
-    zipWithNext { l, r -> l commonItemsWith r }
+    zipWithNext { l, r -> (l.first + l.second).intersect(r.first + r.second) }
         .reduce { l, r -> l.intersect(r) }
         .only()
