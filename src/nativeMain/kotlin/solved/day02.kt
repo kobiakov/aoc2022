@@ -1,5 +1,8 @@
-import Outcome.*
-import Shape.*
+package solved
+
+import solveDay
+import solved.Outcome.*
+import solved.Shape.*
 
 fun main02() {
     // Part 1

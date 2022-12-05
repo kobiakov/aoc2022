@@ -1,3 +1,10 @@
+package solved
+
+import fold
+import map
+import only
+import solveDay
+
 fun main03() {
     // Part 1
     solveDay(3, { TEST_INPUT_DAY_3 }) { input ->

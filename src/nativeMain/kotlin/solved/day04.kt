@@ -1,4 +1,10 @@
-fun main() {
+package solved
+
+import fold
+import map
+import solveDay
+
+fun main04() {
     // Part 1
     solveDay(4, { TEST_INPUT_DAY_4 }) { input ->
         input.trim().lineSequence()

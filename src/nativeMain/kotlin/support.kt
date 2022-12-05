@@ -41,8 +41,15 @@ fun <T> List<T>.partitionBy(predicate: (T) -> Boolean): List<List<T>> =
     }.filterNot { it.isEmpty() }
 
 fun <I, O> Pair<I, I>.map(mapping: (I) -> O): Pair<O, O> = Pair(mapping(first), mapping(second))
+fun <I, L, R> Pair<I, I>.map(left: (I) -> L, right: (I) -> R): Pair<L, R> = Pair(left(first), right(second))
 
 fun <L, R, O> Pair<L, R>.fold(folder: (L, R) -> O): O = folder(first, second)
 
 fun <T> Collection<T>.only() =
     if (size != 1) throw IllegalStateException("the collection is expected to only have one element: $this") else first()
+
+fun <T> Sequence<T>.split(predicate: (T) -> Boolean): Pair<Sequence<T>, Sequence<T>> =
+    Pair(this.takeWhile { !predicate(it) }, this.dropWhile { !predicate(it) }.drop(1))
+
+fun <T> List<T>.withItemAt(index: Int, value: T) =
+    this.take(index) + value + this.drop(index + 1)

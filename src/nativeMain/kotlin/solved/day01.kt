@@ -1,3 +1,8 @@
+package solved
+
+import partitionBy
+import solveDay
+
 fun main01() {
     // Part 1
     solveDay(1) { input ->
