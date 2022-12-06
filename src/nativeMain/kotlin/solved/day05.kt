@@ -1,4 +1,12 @@
-fun main() {
+package solved
+
+import fold
+import map
+import solveDay
+import split
+import withItemAt
+
+fun main05() {
     // Part 1
     solveDay(5, { TEST_INPUT_DAY_5 }) { input ->
         separateStacksFromCommands(input.lineSequence())
@@ -52,7 +60,7 @@ data class Command(val numberOfCrates: Int, val stackFrom: Int, val stackTo: Int
 typealias Commands = List<Command>
 
 fun Command.minusCrate(): Command = with (this) { Command(numberOfCrates - 1, stackFrom, stackTo) }
-fun Command.executeAsCM9000(stacks: CrateStacks): CrateStacks =
+tailrec fun Command.executeAsCM9000(stacks: CrateStacks): CrateStacks =
     if (numberOfCrates <= 0) stacks else minusCrate().executeAsCM9000(stacks.moveOne(stackFrom, stackTo))
 fun Command.executeAsCM9001(stacks: CrateStacks): CrateStacks = stacks.moveManyAtOnce(numberOfCrates, stackFrom, stackTo)
 
