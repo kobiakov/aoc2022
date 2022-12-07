@@ -53,3 +53,6 @@ fun <T> Sequence<T>.split(predicate: (T) -> Boolean): Pair<Sequence<T>, Sequence
 
 fun <T> List<T>.withItemAt(index: Int, value: T) =
     this.take(index) + value + this.drop(index + 1)
+
+fun <K, V> Map<K, V>.putUnlessContainsKey(key: K, value: V) =
+    if (containsKey(key)) this else this + (key to value)
