@@ -1,5 +1,6 @@
 package day08
 
+import Matrix
 import solveDay
 
 fun main08() {
@@ -8,7 +9,7 @@ fun main08() {
         inputToForest(input).findTrees { forest, coordinate -> forest.isTreeVisibleFromOutside(coordinate) }.count()
     }
     // Part 2
-    solveDay(8) { input ->
+    solveDay(8, { TEST_INPUT_DAY_8 }) { input ->
         inputToForest(input).mapTrees { forest, coordinate -> forest.scenicScore(coordinate) }.max()
     }
 }
@@ -22,7 +23,7 @@ val TEST_INPUT_DAY_8 = """
 """.trim()
 
 typealias Height = Char
-typealias Forest = List<List<Height>>
+typealias Forest = Matrix<Height>
 
 data class Coordinate(val row: Int, val column: Int)
 data class Direction(val dRow: Int, val dColumn: Int) {

@@ -1,3 +1,3 @@
-import day08.main08
+import day09.main09
 
-fun main() = main08()
+fun main() = main09()
