@@ -1,4 +1,9 @@
-fun main() {
+package day07
+
+import putUnlessContainsKey
+import solveDay
+
+fun main07() {
     // Part 1
     solveDay(7, { TEST_INPUT_DAY_7 }) { input ->
         parseInput(input).map { state ->
@@ -23,24 +28,24 @@ const val TOTAL_DISK_SPACE = 70000000
 const val REQUIRED_SPACE = 30000000
 
 val TEST_INPUT_DAY_7 = """
-${'$'} cd /
+${'$'} day07.cd /
 ${'$'} ls
 dir a
 14848514 b.txt
 8504156 c.dat
 dir d
-${'$'} cd a
+${'$'} day07.cd a
 ${'$'} ls
 dir e
 29116 f
 2557 g
 62596 h.lst
-${'$'} cd e
+${'$'} day07.cd e
 ${'$'} ls
 584 i
-${'$'} cd ..
-${'$'} cd ..
-${'$'} cd d
+${'$'} day07.cd ..
+${'$'} day07.cd ..
+${'$'} day07.cd d
 ${'$'} ls
 4060174 j
 8033020 d.log
@@ -97,7 +102,7 @@ fun parseFile(input: String): File = with(input.split(" ")) { File(size = this[0
 
 fun invokeCommand(state: State, command: Command): State = when (command.op) {
     "ls" -> state
-    "cd" -> with(relativeToPwd(state, command.args.first())) {
+    "day07.cd" -> with(relativeToPwd(state, command.args.first())) {
         noteDownFolder(state.copy(pwd = this), this)
     }
 

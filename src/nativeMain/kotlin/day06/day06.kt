@@ -1,4 +1,4 @@
-package solved
+package day06
 
 import fold
 import solveDay

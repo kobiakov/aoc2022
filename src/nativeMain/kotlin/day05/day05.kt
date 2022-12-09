@@ -1,4 +1,4 @@
-package solved
+package day05
 
 import fold
 import map

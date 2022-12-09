@@ -1,4 +1,4 @@
-package solved
+package day01
 
 import partitionBy
 import solveDay
