@@ -1,3 +1,3 @@
-import day10.main10
+import day11.main11
 
-fun main() = main10()
+fun main() = main11()

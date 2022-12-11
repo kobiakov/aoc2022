@@ -60,3 +60,5 @@ fun <K, V> Map<K, V>.putUnlessContainsKey(key: K, value: V) =
 
 typealias Matrix<T> = List<List<T>>
 
+fun String.trimmedWords() = this.trim().split(" ").trimmed()
+fun List<String>.trimmed() = this.map(String::trim)
