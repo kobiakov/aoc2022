@@ -201,8 +201,6 @@ data class State(
     val crt: CRT = CRT.forResolution(width = 40, height = 6)
 ) {
     fun tickCPU(step: Step): State = copy(cpu = cpu.step(step))
-    fun introspect(): State = recalculateStrength()
-
     fun recalculateStrength(): State =
         if (isCycleToIntrospect(cpu.cycleCounter)) copy(signalStrength = signalStrength + signalStrength(cpu)) else this
 
@@ -226,4 +224,4 @@ fun parseCommand(line: String): Instruction = with(line.split(" ")) {
 
 fun runProgram(instructions: Sequence<Instruction>): State =
     instructions.flatMap(Instruction::steps)
-        .fold(State()) { state, step -> state.drawPixel().tickCPU(step).introspect() }
+        .fold(State()) { state, step -> state.drawPixel().tickCPU(step).recalculateStrength() }
