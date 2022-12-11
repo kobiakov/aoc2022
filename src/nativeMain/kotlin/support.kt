@@ -26,7 +26,8 @@ typealias inputFunction = suspend (day: Int) -> String
 
 fun solveDay(dayNr: Int, input: inputFunction = ::fetchInput, solver: (input: String) -> Any?) {
     runBlocking {
-        println("The answer is ${solver(input(dayNr))}")
+        println("The answer is:\n" +
+                "----------------------\n${solver(input(dayNr))}\n----------------------")
     }
 }
 
@@ -58,8 +59,4 @@ fun <K, V> Map<K, V>.putUnlessContainsKey(key: K, value: V) =
     if (containsKey(key)) this else this + (key to value)
 
 typealias Matrix<T> = List<List<T>>
-fun <T> Matrix<T>.transpose(times: Int): Matrix<T> = (1..times).fold(this) { acc, _ -> acc.transpose() }
-fun <T> Matrix<T>.transpose(): Matrix<T> = (0 until first().size)
-    .flatMap { column -> (this.size - 1 downTo 0).map { row -> this[row][column] } }
-    .chunked(size)
-    .toList()
+

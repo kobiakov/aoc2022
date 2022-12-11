@@ -1,0 +1,1 @@
+fun <T> trace(message: String, wrapped: () -> T): T = with(wrapped()) { println("$message: $this"); this }
